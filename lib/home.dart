@@ -173,7 +173,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.fromLTRB(0, MediaQuery.of(context).size.height.round() - 771, 0, 20),
+                  padding: EdgeInsets.fromLTRB(0, 50, 0, 20),
                   child: Align(
                     alignment: Alignment.topRight,
                     child: IconButton(

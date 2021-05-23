@@ -89,7 +89,6 @@ class _FavoritesPageState extends State<FavoritesPage> {
           int count = list.length;
 
           if (list == []) {
-            print("h");
             return Align(
               alignment: Alignment.center,
               child: Text("You don't have any favorites!", style: TextStyle(fontSize: 15, color: Colors.black)),
