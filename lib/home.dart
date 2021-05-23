@@ -10,6 +10,7 @@ import 'package:view_met/search.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'about.dart';
+import 'all.dart';
 import 'detailsArt.dart';
 import 'favorites.dart';
 
@@ -283,6 +284,17 @@ class _HomePageState extends State<HomePage> {
                             builder(randint4.toString()),
                             builder(randint5.toString()),
                             builder(randint6.toString()),
+                            TextButton(
+                             onPressed: () {
+                               Navigator.push(
+                                   context,
+                                   MaterialPageRoute(
+                                       builder: (BuildContext context) => AllPage()
+                                   )
+                               );
+                             },
+                             child: Text("See more"),
+                            )
                           ],
                         )
                       ),
