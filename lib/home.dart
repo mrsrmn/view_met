@@ -152,6 +152,7 @@ class _HomePageState extends State<HomePage> {
     print(MediaQuery.of(context).size.height.round() - 770);
     var _controller = TextEditingController();
 
+
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: Center(
@@ -160,7 +161,8 @@ class _HomePageState extends State<HomePage> {
             Stack(
               children: <Widget>[
                 Container(
-                  height: MediaQuery.of(context).size.width,
+                  width: MediaQuery.of(context).size.width,
+                  height: 400,
                   child: Positioned.fill(
                     child: Image.asset(
                         "assets/MET.jpg",
@@ -279,7 +281,7 @@ class _HomePageState extends State<HomePage> {
                 children: <Widget>[
                   Text("Random Items You Could Like", style: GoogleFonts.merriweather(fontSize: 18, color: Colors.black)),
                   SizedBox(
-                    height: MediaQuery.of(context).size.height - 455,
+                    height: MediaQuery.of(context).size.height - 443,
                     child: Expanded(
                       child: SingleChildScrollView(
                         scrollDirection: Axis.vertical,
