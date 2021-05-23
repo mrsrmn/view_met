@@ -149,6 +149,7 @@ class _HomePageState extends State<HomePage> {
       );
     }
 
+    print(MediaQuery.of(context).size.height.round() - 770);
     var _controller = TextEditingController();
 
     return Scaffold(
@@ -158,13 +159,19 @@ class _HomePageState extends State<HomePage> {
           children: <Widget>[
             Stack(
               children: <Widget>[
-                Image.asset(
-                    "assets/MET.jpg",
-                    color: Color.fromRGBO(117, 117, 117, 0.5),
-                    colorBlendMode: BlendMode.modulate
+                Container(
+                  height: MediaQuery.of(context).size.width,
+                  child: Positioned.fill(
+                    child: Image.asset(
+                        "assets/MET.jpg",
+                        fit: BoxFit.fill,
+                        color: Color.fromRGBO(117, 117, 117, 0.5),
+                        colorBlendMode: BlendMode.modulate
+                    ),
+                  ),
                 ),
                 Padding(
-                  padding: EdgeInsets.fromLTRB(0, 50, 0, 20),
+                  padding: EdgeInsets.fromLTRB(0, MediaQuery.of(context).size.height.round() - 771, 0, 20),
                   child: Align(
                     alignment: Alignment.topRight,
                     child: IconButton(
@@ -272,7 +279,7 @@ class _HomePageState extends State<HomePage> {
                 children: <Widget>[
                   Text("Random Items You Could Like", style: GoogleFonts.merriweather(fontSize: 18, color: Colors.black)),
                   SizedBox(
-                    height: MediaQuery.of(context).size.width - 50,
+                    height: MediaQuery.of(context).size.height - 455,
                     child: Expanded(
                       child: SingleChildScrollView(
                         scrollDirection: Axis.vertical,

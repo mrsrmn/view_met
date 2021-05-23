@@ -109,7 +109,7 @@ class _FavoritesPageState extends State<FavoritesPage> {
                   if (snapshot.connectionState == ConnectionState.waiting) {
                     return Padding(
                       padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
-                      child: CircularProgressIndicator(),
+                      child: SizedBox(width: 32.0, height: 32.0, child: new CircularProgressIndicator()),
                     );
                   }
 
