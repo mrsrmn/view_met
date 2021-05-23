@@ -1,7 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.emirs.view_met">
+    <uses-permission android:name="android.permission.INTERNET" />
    <application
-        android:label="view_met"
+        android:label="View MET"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
