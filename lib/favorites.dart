@@ -83,12 +83,12 @@ class _FavoritesPageState extends State<FavoritesPage> {
       return FutureBuilder(
         future: favoritesList(),
         builder: (BuildContext context, snapshot) {
-          print(snapshot.data);
+
           List list = snapshot.data as List;
 
           int count = list.length;
 
-          if (list == []) {
+          if (list.isEmpty) {
             return Align(
               alignment: Alignment.center,
               child: Text("You don't have any favorites!", style: TextStyle(fontSize: 15, color: Colors.black)),
@@ -161,7 +161,7 @@ class _FavoritesPageState extends State<FavoritesPage> {
                               onPressed: () {
                                 Navigator.push(
                                   context,
-                                  MaterialPageRoute(builder: (context) => DetailsPage()),
+                                  MaterialPageRoute(builder: (context) => DetailsPage(id: data["objectID"].toString())),
                                 );
                               },
                               child: Text("Details", style: TextStyle(color: Color(0xFF6200EE))),

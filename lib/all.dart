@@ -32,9 +32,51 @@ class _AllPageState extends State<AllPage> {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     var list = prefs.getStringList("favorites");
 
-    list!.add(id);
+    if (list!.contains(id)) {
+      ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text("This item is already in your favorites!"),
+          )
+      );
+    }
+    else {
+      list.add(id);
+
+      prefs.setStringList("favorites", list);
+
+      ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text("Added to your favorites list"),
+            action: SnackBarAction(
+              label: 'Undo',
+              onPressed: () {
+                _deleteData(id);
+              },
+            ),
+          )
+      );
+    }
+  }
+
+  _deleteData(String id) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    var list = prefs.getStringList("favorites");
+
+    list!.remove(id);
 
     prefs.setStringList("favorites", list);
+
+    ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text("Removed from your favorites list"),
+          action: SnackBarAction(
+            label: 'Undo',
+            onPressed: () {
+              _writeData(id);
+            },
+          ),
+        )
+    );
   }
 
   @override
@@ -118,7 +160,7 @@ class _AllPageState extends State<AllPage> {
                               onPressed: () {
                                 Navigator.push(
                                   context,
-                                  MaterialPageRoute(builder: (context) => DetailsPage()),
+                                  MaterialPageRoute(builder: (context) => DetailsPage(id: data["objectID"].toString())),
                                 );
                               },
                               child: Text("Details", style: TextStyle(color: Color(0xFF6200EE))),
