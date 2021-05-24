@@ -13,7 +13,10 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'View MET',
       theme: ThemeData(
-        primarySwatch: Colors.grey,
+        iconTheme: IconThemeData(
+            color: Colors.white
+        ),
+        primarySwatch: Colors.red,
       ),
       home: HomePage(),
     );

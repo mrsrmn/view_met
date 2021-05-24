@@ -120,14 +120,14 @@ class _FavoritesPageState extends State<FavoritesPage> {
                   try {
                     try {
                       if (data["primaryImageSmall"] == "") {
-                        leading = Icon(Icons.dangerous);
+                        leading = Icon(Icons.dangerous, color: Colors.red);
                       }
                       else {
                         leading = Image.network(data["primaryImageSmall"]);
                       }
                     }
                     on TypeError {
-                      leading = Icon(Icons.dangerous);
+                      leading = Icon(Icons.dangerous, color: Colors.red);
                     }
 
                     if (data["artistDisplayName"]== "") {
@@ -164,13 +164,13 @@ class _FavoritesPageState extends State<FavoritesPage> {
                                   MaterialPageRoute(builder: (context) => DetailsPage(id: data["objectID"].toString())),
                                 );
                               },
-                              child: Text("Details", style: TextStyle(color: Color(0xFF6200EE))),
+                              child: Text("Details", style: TextStyle(color: Colors.red)),
                             ),
                             TextButton(
                               onPressed: () {
                                 _deleteData(id);
                               },
-                              child: Text("Remove from Favorites", style: TextStyle(color: Color(0xFF6200EE))),
+                              child: Text("Remove from Favorites", style: TextStyle(color: Colors.red)),
                             ),
                           ],
                         ),
@@ -188,6 +188,9 @@ class _FavoritesPageState extends State<FavoritesPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Your Favorites"),
+        iconTheme: IconThemeData(
+            color: Colors.white
+        ),
         actions: [
           IconButton(
             onPressed: () {
@@ -202,7 +205,7 @@ class _FavoritesPageState extends State<FavoritesPage> {
           Column(
             children: <Widget>[
               SizedBox(
-                height: 700,
+                height: MediaQuery.of(context).size.height - 100,
                 child: Expanded(
                   child: builder()
                 ),

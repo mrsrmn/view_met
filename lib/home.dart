@@ -135,7 +135,7 @@ class _HomePageState extends State<HomePage> {
 
           try {
             if (data["primaryImageSmall"] == "") {
-              leading = Icon(Icons.dangerous);
+              leading = Icon(Icons.dangerous, color: Colors.red);
             }
             else {
               leading = Image.network(data["primaryImageSmall"]);
@@ -174,13 +174,13 @@ class _HomePageState extends State<HomePage> {
                           MaterialPageRoute(builder: (context) => DetailsPage(id: data["objectID"].toString())),
                         );
                       },
-                      child: Text("Details", style: TextStyle(color: Color(0xFF6200EE))),
+                      child: Text("Details", style: TextStyle(color: Colors.red)),
                     ),
                     TextButton(
                       onPressed: () {
                         _writeData(data["objectID"].toString());
                       },
-                      child: Text("Add to Favorites", style: TextStyle(color: Color(0xFF6200EE))),
+                      child: Text("Add to Favorites", style: TextStyle(color: Colors.red)),
                     ),
                   ],
                 ),

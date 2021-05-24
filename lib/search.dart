@@ -140,14 +140,14 @@ class _SearchPageState extends State<SearchPage> {
                   try {
                     try {
                       if (data["primaryImageSmall"] == "") {
-                        leading = Icon(Icons.dangerous);
+                        leading = Icon(Icons.dangerous, color: Colors.red);
                       }
                       else {
                         leading = Image.network(data["primaryImageSmall"]);
                       }
                     }
                     on Exception {
-                      leading = Icon(Icons.dangerous);
+                      leading = Icon(Icons.dangerous, color: Colors.red);
                     }
 
                     if (data["artistDisplayName"]== "") {
@@ -184,13 +184,13 @@ class _SearchPageState extends State<SearchPage> {
                                   MaterialPageRoute(builder: (context) => DetailsPage(id: data["objectID"].toString())),
                                 );
                               },
-                              child: Text("Details", style: TextStyle(color: Color(0xFF6200EE))),
+                              child: Text("Details", style: TextStyle(color: Colors.red)),
                             ),
                             TextButton(
                               onPressed: () {
                                 _writeData(data["objectID"].toString());
                               },
-                              child: Text("Add to Favorites", style: TextStyle(color: Color(0xFF6200EE))),
+                              child: Text("Add to Favorites", style: TextStyle(color: Colors.red)),
                             ),
                           ],
                         ),
@@ -208,6 +208,9 @@ class _SearchPageState extends State<SearchPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Search"),
+        iconTheme: IconThemeData(
+            color: Colors.white
+        ),
       ),
       body: ListView(
         children: <Widget>[

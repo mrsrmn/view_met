@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -97,7 +98,7 @@ class _DetailsPageState extends State<DetailsPage> {
 
           try {
             if (data["primaryImageSmall"] == "") {
-              leading = Icon(Icons.dangerous, size: 50,);
+              leading = Icon(Icons.dangerous, size: 50, color: Colors.red,);
             }
             else {
               leading = Image.network(data["primaryImageSmall"]);
@@ -124,89 +125,242 @@ class _DetailsPageState extends State<DetailsPage> {
           return Column(
               children: <Widget>[
                 leading,
-                Divider(color: Colors.black),
-                Text(
-                  "Title: ${data["title"]}",
-                  style: TextStyle(fontSize: 20),
-                ),
-                Divider(color: Colors.black),
-                Text(
-                  "Artist: $artist",
-                  style: TextStyle(fontSize: 20),
-                ),
-                Divider(color: Colors.black),
-                Text(
-                  "Object ID: ${data["objectID"]}",
-                  style: TextStyle(fontSize: 20),
-                ),
-                Divider(color: Colors.black),
-                Text(
-                  "Is Highlighted: ${data["isHighlight"]}",
-                  style: TextStyle(fontSize: 20),
-                ),
-                Divider(color: Colors.black),
-                Text(
-                  "Accession Number: ${data["accessionNumber"]}",
-                  style: TextStyle(fontSize: 20),
-                ),
-                Divider(color: Colors.black),
-                Text(
-                  "Accession Year: ${data["accessionYear"]}",
-                  style: TextStyle(fontSize: 20),
-                ),
-                Divider(color: Colors.black),
-                Text(
-                  "Department: ${data["department"]}",
-                  style: TextStyle(fontSize: 20),
-                ),
-                Divider(color: Colors.black),
-                Text(
-                  "Object Name: ${data["objectName"]}",
-                  style: TextStyle(fontSize: 20),
-                ),
-                Divider(color: Colors.black),
-                Text(
-                  "Culture: $culture",
-                  style: TextStyle(fontSize: 20),
-                ),
-                Divider(color: Colors.black),
-                Text(
-                  "Dimensions: ${data["dimensions"]}",
-                  style: TextStyle(fontSize: 20),
-                ),
-                Divider(color: Colors.black),
-                Text(
-                  "Credit Line: ${data["creditLine"]}",
-                  style: TextStyle(fontSize: 20),
-                ),
-                Divider(color: Colors.black),
-                Text(
-                  "Date: ${data["objectDate"]}",
-                  style: TextStyle(fontSize: 20),
-                ),
-                Divider(color: Colors.black),
-                Text(
-                  "Object URL: ",
-                  style: TextStyle(fontSize: 20),
-                ),
-                RichText(
-                  text: TextSpan(
-                    text: "Link",
-                    recognizer: TapGestureRecognizer()
-                      ..onTap = () async {
-                        await launch(data["objectURL"], forceSafariVC: false);
-                      },
-                    style: TextStyle(
-                        fontSize: 20, color: Colors.blue
-                    ),
+                Padding(
+                  padding: EdgeInsets.fromLTRB(8, 6, 0, 0),
+                  child: Row(
+                    children: [
+                      Text(
+                        "Title: ",
+                        style: GoogleFonts.workSans(fontSize: 20, color: Colors.red),
+                      ),
+                      Expanded(
+                        child: Text(
+                          data["title"].toString(),
+                          style: GoogleFonts.workSans(fontSize: 20),
+                        ),
+                      )
+                    ],
                   ),
                 ),
-                Divider(color: Colors.black),
-                TextButton(
-                  onPressed: () {
-                    _writeData(data["objectID"].toString());
-                  },
-                  child: Text("Add to Favorites", style: TextStyle(color: Color(0xFF6200EE))),
+                Padding(
+                  padding: EdgeInsets.fromLTRB(8, 6, 0, 0),
+                  child: Row(
+                    children: [
+                      Text(
+                        "Object Name: ",
+                        style: GoogleFonts.workSans(fontSize: 20, color: Colors.red),
+                      ),
+                      Expanded(
+                        child: Text(
+                          data["objectName"].toString(),
+                          style: GoogleFonts.workSans(fontSize: 20),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.fromLTRB(8, 6, 0, 0),
+                  child: Row(
+                    children: [
+                      Text(
+                        "Artist: ",
+                        style: GoogleFonts.workSans(fontSize: 20, color: Colors.red),
+                      ),
+                      Expanded(
+                        child: Text(
+                          artist.toString(),
+                          style: GoogleFonts.workSans(fontSize: 20),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.fromLTRB(8, 6, 0, 0),
+                  child: Row(
+                    children: [
+                      Text(
+                        "Object ID: ",
+                        style: GoogleFonts.workSans(fontSize: 20, color: Colors.red),
+                      ),
+                      Expanded(
+                        child: Text(
+                          data["objectID"].toString(),
+                          style: GoogleFonts.workSans(fontSize: 20),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.fromLTRB(8, 6, 0, 0),
+                  child: Row(
+                    children: [
+                      Text(
+                        "Is Highlighted: ",
+                        style: GoogleFonts.workSans(fontSize: 20, color: Colors.red),
+                      ),
+                      Expanded(
+                        child: Text(
+                          data["isHighlight"].toString(),
+                          style: GoogleFonts.workSans(fontSize: 20),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.fromLTRB(8, 6, 0, 0),
+                  child: Row(
+                    children: [
+                      Text(
+                        "Date: ",
+                        style: GoogleFonts.workSans(fontSize: 20, color: Colors.red),
+                      ),
+                      Expanded(
+                        child: Text(
+                          data["objectDate"].toString(),
+                          style: GoogleFonts.workSans(fontSize: 20),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.fromLTRB(8, 6, 0, 0),
+                  child: Row(
+                    children: [
+                      Text(
+                        "Accession Year: ",
+                        style: GoogleFonts.workSans(fontSize: 20, color: Colors.red),
+                      ),
+                      Expanded(
+                        child: Text(
+                          data["accessionYear"].toString(),
+                          style: GoogleFonts.workSans(fontSize: 20),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.fromLTRB(8, 6, 0, 0),
+                  child: Row(
+                    children: [
+                      Text(
+                        "Accession Number: ",
+                        style: GoogleFonts.workSans(fontSize: 20, color: Colors.red),
+                      ),
+                      Expanded(
+                        child: Text(
+                          data["accessionNumber"].toString(),
+                          style: GoogleFonts.workSans(fontSize: 20),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.fromLTRB(8, 6, 0, 0),
+                  child: Row(
+                    children: [
+                      Text(
+                        "Department: ",
+                        style: GoogleFonts.workSans(fontSize: 20, color: Colors.red),
+                      ),
+                      Expanded(
+                        child: Text(
+                          data["department"].toString(),
+                          style: GoogleFonts.workSans(fontSize: 20),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.fromLTRB(8, 6, 0, 0),
+                  child: Row(
+                    children: [
+                      Text(
+                        "Culture: ",
+                        style: GoogleFonts.workSans(fontSize: 20, color: Colors.red),
+                      ),
+                      Expanded(
+                        child: Text(
+                          culture.toString(),
+                          style: GoogleFonts.workSans(fontSize: 20),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.fromLTRB(8, 6, 0, 0),
+                  child: Row(
+                    children: [
+                      Text(
+                        "Dimensions: ",
+                        style: GoogleFonts.workSans(fontSize: 20, color: Colors.red),
+                      ),
+                      Expanded(
+                        child: Text(
+                          data["dimensions"].toString(),
+                          style: GoogleFonts.workSans(fontSize: 20),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.fromLTRB(8, 6, 0, 0),
+                  child: Row(
+                    children: [
+                      Text(
+                        "Credit Line: ",
+                        style: GoogleFonts.workSans(fontSize: 20, color: Colors.red),
+                      ),
+                      Expanded(
+                        child: Text(
+                          data["creditLine"].toString(),
+                          style: GoogleFonts.workSans(fontSize: 20),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.fromLTRB(8, 6, 0, 0),
+                  child: Row(
+                    children: [
+                      Text(
+                        "Object URL: ",
+                        style: GoogleFonts.workSans(fontSize: 20, color: Colors.red),
+                      ),
+                      RichText(
+                        text: TextSpan(
+                          text: "Link",
+                          recognizer: TapGestureRecognizer()
+                            ..onTap = () async {
+                              await launch(data["objectURL"], forceSafariVC: false);
+                            },
+                          style: GoogleFonts.workSans(fontSize: 20, color: Colors.blue),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.fromLTRB(8, 6, 0, 7),
+                  child: TextButton(
+                    style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all(Colors.red)
+                    ),
+                    onPressed: () {
+                      _writeData(data["objectID"].toString());
+                    },
+                    child: Text("Add to Favorites", style: TextStyle(color: Colors.white)),
+                  ),
                 ),
               ],
             );
@@ -216,9 +370,12 @@ class _DetailsPageState extends State<DetailsPage> {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
+        iconTheme: IconThemeData(
+            color: Colors.white
+        ),
+        foregroundColor: Colors.white,
         elevation: 0,
-        title: Text("Details"),
+        title: Text("Details", style: TextStyle(color: Colors.white)),
       ),
       body: ListView(
         children: <Widget>[
