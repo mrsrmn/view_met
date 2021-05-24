@@ -91,7 +91,7 @@ class _FavoritesPageState extends State<FavoritesPage> {
           if (list.isEmpty) {
             return Align(
               alignment: Alignment.center,
-              child: Text("You don't have any favorites!", style: TextStyle(fontSize: 15, color: Colors.black)),
+              child: Text("You don't have any favorites saved!", style: TextStyle(fontSize: 15, color: Colors.black)),
             );
           }
 
