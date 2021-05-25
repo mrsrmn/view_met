@@ -28,6 +28,7 @@ class _HomePageState extends State<HomePage> {
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,
     ]);
+    checkEmpty();
   }
 
   checkEmpty() async {
@@ -97,11 +98,15 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
+  var randint1 = Random().nextInt(70000);
+  var randint2 = Random().nextInt(70000);
+  var randint3 = Random().nextInt(70000);
+  var randint4 = Random().nextInt(70000);
+  var randint5 = Random().nextInt(70000);
+  var randint6 = Random().nextInt(70000);
+
   @override
   Widget build(BuildContext context) {
-
-    checkEmpty();
-
     welcomeText() {
       var now = DateTime.now();
 
@@ -118,14 +123,6 @@ class _HomePageState extends State<HomePage> {
         return Text("Hello", style: GoogleFonts.playfairDisplaySc(fontSize: 18, color: Colors.white, fontWeight: FontWeight.bold),);
       }
     }
-
-    var randint1 = Random().nextInt(70000);
-    var randint2 = Random().nextInt(70000);
-    var randint3 = Random().nextInt(70000);
-    var randint4 = Random().nextInt(70000);
-    var randint5 = Random().nextInt(70000);
-    var randint6 = Random().nextInt(70000);
-
 
     builder(String id) {
       return FutureBuilder(
