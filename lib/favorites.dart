@@ -26,37 +26,46 @@ class _FavoritesPageState extends State<FavoritesPage> {
 
     _deleteAll() async {
       SharedPreferences prefs = await SharedPreferences.getInstance();
+      var list = prefs.getStringList("favorites");
 
-      showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            title: Text("Are you sure?"),
-            content: Text("This will delete everything forever in your favorites list!"),
-            actions: [
-              TextButton(
-                child: Text("OK"),
-                onPressed: () {
-                  prefs.setStringList("favorites", []);
+      if (list!.isEmpty) {
+        ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text("Your list is empty!"),
+            )
+        );
+      }
+      else {
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text("Are you sure?"),
+              content: Text("This will delete everything forever in your favorites list!"),
+              actions: [
+                TextButton(
+                  child: Text("OK"),
+                  onPressed: () {
+                    prefs.setStringList("favorites", []);
 
-                  Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                          builder: (BuildContext context) => this.widget
-                      )
-                  );
-                },
-              ),
-              TextButton(
-                child: Text("CANCEL"),
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-              )
-            ],
-          );
-        },
-      );
+                    Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                            builder: (BuildContext context) => this.widget)
+                    );
+                  },
+                ),
+                TextButton(
+                  child: Text("CANCEL"),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                )
+              ],
+            );
+          },
+        );
+      }
     }
 
     favoritesList() async {
@@ -106,9 +115,12 @@ class _FavoritesPageState extends State<FavoritesPage> {
                 future: fetchData(id.toString()),
                 builder: (BuildContext context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
-                    return Padding(
-                      padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
-                      child: SizedBox(width: 32.0, height: 32.0, child: new CircularProgressIndicator()),
+                    return Align(
+                      alignment: Alignment.center,
+                      child: Padding(
+                        padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
+                        child: CircularProgressIndicator(),
+                      ),
                     );
                   }
 

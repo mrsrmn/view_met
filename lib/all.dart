@@ -87,9 +87,12 @@ class _AllPageState extends State<AllPage> {
         future: fetchAllData(),
         builder: (BuildContext context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Padding(
-              padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
-              child: CircularProgressIndicator(),
+            return Align(
+              alignment: Alignment.center,
+              child: Padding(
+                padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
+                child: CircularProgressIndicator(),
+              ),
             );
           }
           var data = jsonDecode(snapshot.data.toString());
@@ -105,9 +108,12 @@ class _AllPageState extends State<AllPage> {
                 future: fetchData(id.toString()),
                 builder: (BuildContext context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
-                    return Padding(
-                      padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
-                      child: CircularProgressIndicator(),
+                    return Align(
+                      alignment: Alignment.center,
+                      child: Padding(
+                        padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
+                        child: CircularProgressIndicator(),
+                      ),
                     );
                   }
 

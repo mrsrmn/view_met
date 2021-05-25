@@ -98,9 +98,12 @@ class _SearchPageState extends State<SearchPage> {
         future: fetchSearchData(query),
         builder: (BuildContext context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Padding(
-              padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
-              child: CircularProgressIndicator(),
+            return Align(
+              alignment: Alignment.center,
+              child: Padding(
+                padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
+                child: CircularProgressIndicator(),
+              ),
             );
           }
           var dataSearch = jsonDecode(snapshot.data.toString());
@@ -126,9 +129,12 @@ class _SearchPageState extends State<SearchPage> {
                 future: fetchData(id.toString()),
                 builder: (BuildContext context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
-                    return Padding(
-                      padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
-                      child: CircularProgressIndicator(),
+                    return Align(
+                      alignment: Alignment.center,
+                      child: Padding(
+                        padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
+                        child: CircularProgressIndicator(),
+                      ),
                     );
                   }
 
