@@ -86,300 +86,299 @@ class _DetailsPageState extends State<DetailsPage> {
     );
   }
 
+  builder(String id) {
+    return FutureBuilder(
+      future: fetchData(id),
+      builder: (BuildContext context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return Align(
+            alignment: Alignment.center,
+            child: Padding(
+              padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
+              child: CircularProgressIndicator(),
+            ),
+          );
+        }
+        var data = jsonDecode(snapshot.data.toString());
+
+        var leading;
+        var artist;
+        var culture;
+
+        try {
+          if (data["primaryImageSmall"] == "") {
+            leading = Icon(Icons.dangerous, size: 50, color: Colors.red,);
+          }
+          else {
+            leading = Image.network(data["primaryImageSmall"]);
+          }
+
+          if (data["artistDisplayName"]== "") {
+            artist = "Unknown";
+          }
+          else {
+            artist = data["artistDisplayName"];
+          }
+
+          if (data["culture"]== "") {
+            culture = "Unknown";
+          }
+          else {
+            culture = data["culture"];
+          }
+        }
+        on TypeError {
+          return SizedBox.shrink();
+        }
+
+        return Column(
+          children: <Widget>[
+            leading,
+            Padding(
+              padding: EdgeInsets.fromLTRB(8, 6, 0, 0),
+              child: Row(
+                children: [
+                  Text(
+                    "Title: ",
+                    style: GoogleFonts.workSans(fontSize: 20, color: Colors.red),
+                  ),
+                  Expanded(
+                    child: Text(
+                      data["title"].toString(),
+                      style: GoogleFonts.workSans(fontSize: 20),
+                    ),
+                  )
+                ],
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.fromLTRB(8, 6, 0, 0),
+              child: Row(
+                children: [
+                  Text(
+                    "Object Name: ",
+                    style: GoogleFonts.workSans(fontSize: 20, color: Colors.red),
+                  ),
+                  Expanded(
+                    child: Text(
+                      data["objectName"].toString(),
+                      style: GoogleFonts.workSans(fontSize: 20),
+                    ),
+                  )
+                ],
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.fromLTRB(8, 6, 0, 0),
+              child: Row(
+                children: [
+                  Text(
+                    "Artist: ",
+                    style: GoogleFonts.workSans(fontSize: 20, color: Colors.red),
+                  ),
+                  Expanded(
+                    child: Text(
+                      artist.toString(),
+                      style: GoogleFonts.workSans(fontSize: 20),
+                    ),
+                  )
+                ],
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.fromLTRB(8, 6, 0, 0),
+              child: Row(
+                children: [
+                  Text(
+                    "Object ID: ",
+                    style: GoogleFonts.workSans(fontSize: 20, color: Colors.red),
+                  ),
+                  Expanded(
+                    child: Text(
+                      data["objectID"].toString(),
+                      style: GoogleFonts.workSans(fontSize: 20),
+                    ),
+                  )
+                ],
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.fromLTRB(8, 6, 0, 0),
+              child: Row(
+                children: [
+                  Text(
+                    "Is Highlighted: ",
+                    style: GoogleFonts.workSans(fontSize: 20, color: Colors.red),
+                  ),
+                  Expanded(
+                    child: Text(
+                      data["isHighlight"].toString(),
+                      style: GoogleFonts.workSans(fontSize: 20),
+                    ),
+                  )
+                ],
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.fromLTRB(8, 6, 0, 0),
+              child: Row(
+                children: [
+                  Text(
+                    "Date: ",
+                    style: GoogleFonts.workSans(fontSize: 20, color: Colors.red),
+                  ),
+                  Expanded(
+                    child: Text(
+                      data["objectDate"].toString(),
+                      style: GoogleFonts.workSans(fontSize: 20),
+                    ),
+                  )
+                ],
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.fromLTRB(8, 6, 0, 0),
+              child: Row(
+                children: [
+                  Text(
+                    "Accession Year: ",
+                    style: GoogleFonts.workSans(fontSize: 20, color: Colors.red),
+                  ),
+                  Expanded(
+                    child: Text(
+                      data["accessionYear"].toString(),
+                      style: GoogleFonts.workSans(fontSize: 20),
+                    ),
+                  )
+                ],
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.fromLTRB(8, 6, 0, 0),
+              child: Row(
+                children: [
+                  Text(
+                    "Accession Number: ",
+                    style: GoogleFonts.workSans(fontSize: 20, color: Colors.red),
+                  ),
+                  Expanded(
+                    child: Text(
+                      data["accessionNumber"].toString(),
+                      style: GoogleFonts.workSans(fontSize: 20),
+                    ),
+                  )
+                ],
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.fromLTRB(8, 6, 0, 0),
+              child: Row(
+                children: [
+                  Text(
+                    "Department: ",
+                    style: GoogleFonts.workSans(fontSize: 20, color: Colors.red),
+                  ),
+                  Expanded(
+                    child: Text(
+                      data["department"].toString(),
+                      style: GoogleFonts.workSans(fontSize: 20),
+                    ),
+                  )
+                ],
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.fromLTRB(8, 6, 0, 0),
+              child: Row(
+                children: [
+                  Text(
+                    "Culture: ",
+                    style: GoogleFonts.workSans(fontSize: 20, color: Colors.red),
+                  ),
+                  Expanded(
+                    child: Text(
+                      culture.toString(),
+                      style: GoogleFonts.workSans(fontSize: 20),
+                    ),
+                  )
+                ],
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.fromLTRB(8, 6, 0, 0),
+              child: Row(
+                children: [
+                  Text(
+                    "Dimensions: ",
+                    style: GoogleFonts.workSans(fontSize: 20, color: Colors.red),
+                  ),
+                  Expanded(
+                    child: Text(
+                      data["dimensions"].toString(),
+                      style: GoogleFonts.workSans(fontSize: 20),
+                    ),
+                  )
+                ],
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.fromLTRB(8, 6, 0, 0),
+              child: Row(
+                children: [
+                  Text(
+                    "Credit Line: ",
+                    style: GoogleFonts.workSans(fontSize: 20, color: Colors.red),
+                  ),
+                  Expanded(
+                    child: Text(
+                      data["creditLine"].toString(),
+                      style: GoogleFonts.workSans(fontSize: 20),
+                    ),
+                  )
+                ],
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.fromLTRB(8, 6, 0, 0),
+              child: Row(
+                children: [
+                  Text(
+                    "Object URL: ",
+                    style: GoogleFonts.workSans(fontSize: 20, color: Colors.red),
+                  ),
+                  RichText(
+                    text: TextSpan(
+                      text: "Link",
+                      recognizer: TapGestureRecognizer()
+                        ..onTap = () async {
+                          await launch(data["objectURL"], forceSafariVC: false);
+                        },
+                      style: GoogleFonts.workSans(fontSize: 20, color: Colors.blue),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.fromLTRB(8, 6, 0, 7),
+              child: TextButton(
+                style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(Colors.red)
+                ),
+                onPressed: () {
+                  _writeData(data["objectID"].toString());
+                },
+                child: Text("Add to Favorites", style: TextStyle(color: Colors.white)),
+              ),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-
-    builder(String id) {
-      return FutureBuilder(
-        future: fetchData(id),
-        builder: (BuildContext context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return Align(
-              alignment: Alignment.center,
-              child: Padding(
-                padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
-                child: CircularProgressIndicator(),
-              ),
-            );
-          }
-          var data = jsonDecode(snapshot.data.toString());
-
-          var leading;
-          var artist;
-          var culture;
-
-          try {
-            if (data["primaryImageSmall"] == "") {
-              leading = Icon(Icons.dangerous, size: 50, color: Colors.red,);
-            }
-            else {
-              leading = Image.network(data["primaryImageSmall"]);
-            }
-
-            if (data["artistDisplayName"]== "") {
-              artist = "Unknown";
-            }
-            else {
-              artist = data["artistDisplayName"];
-            }
-
-            if (data["culture"]== "") {
-              culture = "Unknown";
-            }
-            else {
-              culture = data["culture"];
-            }
-          }
-          on TypeError {
-            return SizedBox.shrink();
-          }
-
-          return Column(
-              children: <Widget>[
-                leading,
-                Padding(
-                  padding: EdgeInsets.fromLTRB(8, 6, 0, 0),
-                  child: Row(
-                    children: [
-                      Text(
-                        "Title: ",
-                        style: GoogleFonts.workSans(fontSize: 20, color: Colors.red),
-                      ),
-                      Expanded(
-                        child: Text(
-                          data["title"].toString(),
-                          style: GoogleFonts.workSans(fontSize: 20),
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.fromLTRB(8, 6, 0, 0),
-                  child: Row(
-                    children: [
-                      Text(
-                        "Object Name: ",
-                        style: GoogleFonts.workSans(fontSize: 20, color: Colors.red),
-                      ),
-                      Expanded(
-                        child: Text(
-                          data["objectName"].toString(),
-                          style: GoogleFonts.workSans(fontSize: 20),
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.fromLTRB(8, 6, 0, 0),
-                  child: Row(
-                    children: [
-                      Text(
-                        "Artist: ",
-                        style: GoogleFonts.workSans(fontSize: 20, color: Colors.red),
-                      ),
-                      Expanded(
-                        child: Text(
-                          artist.toString(),
-                          style: GoogleFonts.workSans(fontSize: 20),
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.fromLTRB(8, 6, 0, 0),
-                  child: Row(
-                    children: [
-                      Text(
-                        "Object ID: ",
-                        style: GoogleFonts.workSans(fontSize: 20, color: Colors.red),
-                      ),
-                      Expanded(
-                        child: Text(
-                          data["objectID"].toString(),
-                          style: GoogleFonts.workSans(fontSize: 20),
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.fromLTRB(8, 6, 0, 0),
-                  child: Row(
-                    children: [
-                      Text(
-                        "Is Highlighted: ",
-                        style: GoogleFonts.workSans(fontSize: 20, color: Colors.red),
-                      ),
-                      Expanded(
-                        child: Text(
-                          data["isHighlight"].toString(),
-                          style: GoogleFonts.workSans(fontSize: 20),
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.fromLTRB(8, 6, 0, 0),
-                  child: Row(
-                    children: [
-                      Text(
-                        "Date: ",
-                        style: GoogleFonts.workSans(fontSize: 20, color: Colors.red),
-                      ),
-                      Expanded(
-                        child: Text(
-                          data["objectDate"].toString(),
-                          style: GoogleFonts.workSans(fontSize: 20),
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.fromLTRB(8, 6, 0, 0),
-                  child: Row(
-                    children: [
-                      Text(
-                        "Accession Year: ",
-                        style: GoogleFonts.workSans(fontSize: 20, color: Colors.red),
-                      ),
-                      Expanded(
-                        child: Text(
-                          data["accessionYear"].toString(),
-                          style: GoogleFonts.workSans(fontSize: 20),
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.fromLTRB(8, 6, 0, 0),
-                  child: Row(
-                    children: [
-                      Text(
-                        "Accession Number: ",
-                        style: GoogleFonts.workSans(fontSize: 20, color: Colors.red),
-                      ),
-                      Expanded(
-                        child: Text(
-                          data["accessionNumber"].toString(),
-                          style: GoogleFonts.workSans(fontSize: 20),
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.fromLTRB(8, 6, 0, 0),
-                  child: Row(
-                    children: [
-                      Text(
-                        "Department: ",
-                        style: GoogleFonts.workSans(fontSize: 20, color: Colors.red),
-                      ),
-                      Expanded(
-                        child: Text(
-                          data["department"].toString(),
-                          style: GoogleFonts.workSans(fontSize: 20),
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.fromLTRB(8, 6, 0, 0),
-                  child: Row(
-                    children: [
-                      Text(
-                        "Culture: ",
-                        style: GoogleFonts.workSans(fontSize: 20, color: Colors.red),
-                      ),
-                      Expanded(
-                        child: Text(
-                          culture.toString(),
-                          style: GoogleFonts.workSans(fontSize: 20),
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.fromLTRB(8, 6, 0, 0),
-                  child: Row(
-                    children: [
-                      Text(
-                        "Dimensions: ",
-                        style: GoogleFonts.workSans(fontSize: 20, color: Colors.red),
-                      ),
-                      Expanded(
-                        child: Text(
-                          data["dimensions"].toString(),
-                          style: GoogleFonts.workSans(fontSize: 20),
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.fromLTRB(8, 6, 0, 0),
-                  child: Row(
-                    children: [
-                      Text(
-                        "Credit Line: ",
-                        style: GoogleFonts.workSans(fontSize: 20, color: Colors.red),
-                      ),
-                      Expanded(
-                        child: Text(
-                          data["creditLine"].toString(),
-                          style: GoogleFonts.workSans(fontSize: 20),
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.fromLTRB(8, 6, 0, 0),
-                  child: Row(
-                    children: [
-                      Text(
-                        "Object URL: ",
-                        style: GoogleFonts.workSans(fontSize: 20, color: Colors.red),
-                      ),
-                      RichText(
-                        text: TextSpan(
-                          text: "Link",
-                          recognizer: TapGestureRecognizer()
-                            ..onTap = () async {
-                              await launch(data["objectURL"], forceSafariVC: false);
-                            },
-                          style: GoogleFonts.workSans(fontSize: 20, color: Colors.blue),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.fromLTRB(8, 6, 0, 7),
-                  child: TextButton(
-                    style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all(Colors.red)
-                    ),
-                    onPressed: () {
-                      _writeData(data["objectID"].toString());
-                    },
-                    child: Text("Add to Favorites", style: TextStyle(color: Colors.white)),
-                  ),
-                ),
-              ],
-            );
-        },
-      );
-    }
-
     return Scaffold(
       appBar: AppBar(
         iconTheme: IconThemeData(

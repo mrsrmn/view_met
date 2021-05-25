@@ -105,6 +105,8 @@ class _HomePageState extends State<HomePage> {
   var randint5 = Random().nextInt(70000);
   var randint6 = Random().nextInt(70000);
 
+  var _controller = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     welcomeText() {
@@ -196,9 +198,6 @@ class _HomePageState extends State<HomePage> {
         },
       );
     }
-
-    var _controller = TextEditingController();
-
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
