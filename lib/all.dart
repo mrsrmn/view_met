@@ -209,12 +209,14 @@ class _AllPageState extends State<AllPage> {
           Column(
             children: <Widget>[
               Text("All of the items in MET (475.000+)", style: TextStyle(fontSize: 18, color: Colors.black)),
-              SizedBox(
-                height: 700,
-                child: Expanded(
-                    child: builder()
+              Scrollbar(
+                child: SizedBox(
+                  height: 700,
+                  child: Expanded(
+                      child: builder()
+                  ),
                 ),
-              ),
+              )
             ],
           ),
         ],

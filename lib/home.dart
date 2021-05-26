@@ -174,6 +174,16 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.account_balance),
+        tooltip: "All of the Items",
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => AllPage()),
+          );
+        },
+      ),
       resizeToAvoidBottomInset: false,
       body: Center(
         child: Column(
@@ -282,16 +292,12 @@ class _HomePageState extends State<HomePage> {
               child: Column(
                 children: <Widget>[
                   Text("Departments", style: GoogleFonts.merriweather(fontSize: 18, color: Colors.black)),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height - 438,
-                    child: ListView(
-                      shrinkWrap: true,
-                      children: <Widget>[
-                        SizedBox(
-                          height: MediaQuery.of(context).size.height - 443,
+                  Scrollbar(
+                    child: SizedBox(
+                      height: MediaQuery.of(context).size.height - 438,
+                      child: Expanded(
                           child: builder()
-                        ),
-                      ],
+                      ),
                     ),
                   ),
                 ],

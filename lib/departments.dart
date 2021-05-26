@@ -223,12 +223,14 @@ class _DepartmentsPageState extends State<DepartmentsPage> {
         children: <Widget>[
           Column(
             children: <Widget>[
-              SizedBox(
-                height: 700,
-                child: Expanded(
-                    child: builder()
+              Scrollbar(
+                child: SizedBox(
+                  height: 700,
+                  child: Expanded(
+                      child: builder()
+                  ),
                 ),
-              ),
+              )
             ],
           ),
         ],

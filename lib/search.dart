@@ -236,12 +236,14 @@ class _SearchPageState extends State<SearchPage> {
                 visible: visibility,
                 child: Text("$count results found", style: TextStyle(fontSize: 18, color: Colors.black)),
               ),
-              SizedBox(
-                height: 700,
-                child: Expanded(
-                  child: builder(text)
-                ),
-              ),
+              Scrollbar(
+                child: SizedBox(
+                  height: 700,
+                  child: Expanded(
+                     child: builder(text)
+                 ),
+               ),
+              )
             ],
           ),
         ],
