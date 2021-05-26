@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -12,7 +11,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'about.dart';
 import 'all.dart';
-import 'detailsArt.dart';
+import 'departments.dart';
 import 'favorites.dart';
 
 class HomePage extends StatefulWidget {
@@ -41,8 +40,8 @@ class _HomePageState extends State<HomePage> {
   }
 
 
-  fetchData(String id) async {
-    var request = await http.get(Uri.parse("https://collectionapi.metmuseum.org/public/collection/v1/objects/$id"));
+  fetchData() async {
+    var request = await http.get(Uri.parse("https://collectionapi.metmuseum.org/public/collection/v1/departments"));
 
     return request.body;
   }
@@ -98,107 +97,82 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  var randint1 = Random().nextInt(70000);
-  var randint2 = Random().nextInt(70000);
-  var randint3 = Random().nextInt(70000);
-  var randint4 = Random().nextInt(70000);
-  var randint5 = Random().nextInt(70000);
-  var randint6 = Random().nextInt(70000);
-
   var _controller = TextEditingController();
+
+  welcomeText() {
+    var now = DateTime.now();
+
+    if (now.hour <= 11 && now.hour >= 5) {
+      return Text("Good Morning", style: GoogleFonts.playfairDisplaySc(fontSize: 18, color: Colors.white, fontWeight: FontWeight.bold));
+    }
+    else if (now.hour <= 17 && now.hour >= 12) {
+      return Text("Good Afternoon", style: GoogleFonts.playfairDisplaySc(fontSize: 18, color: Colors.white, fontWeight: FontWeight.bold),);
+    }
+    else if (now.hour <= 21 && now.hour >= 18 && now.hour >= 19 && now.hour >= 5 || now.hour == 0) {
+      return Text("Good Evening", style: GoogleFonts.playfairDisplaySc(fontSize: 18, color: Colors.white, fontWeight: FontWeight.bold),);
+    }
+    else {
+      return Text("Hello", style: GoogleFonts.playfairDisplaySc(fontSize: 18, color: Colors.white, fontWeight: FontWeight.bold),);
+    }
+  }
+
+  builder() {
+    return FutureBuilder(
+      future: fetchData(),
+      builder: (BuildContext context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return Align(
+            alignment: Alignment.center,
+            child: Padding(
+              padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
+              child: CircularProgressIndicator(),
+            ),
+          );
+        }
+        var data = jsonDecode(snapshot.data.toString());
+
+        return ListView.builder(
+          shrinkWrap: true,
+          scrollDirection: Axis.vertical,
+          itemCount: data["departments"].length,
+          itemBuilder: (BuildContext context, int index) {
+            var id = data["departments"][index]["departmentId"];
+            var name = data["departments"][index]["displayName"];
+
+            return Card(
+              clipBehavior: Clip.antiAlias,
+              child: Column(
+                children: [
+                  ListTile(
+                    title: Text(data["departments"][index]["displayName"]),
+                  ),
+                  ButtonBar(
+                    alignment: MainAxisAlignment.start,
+                    children: [
+                      TextButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => DepartmentsPage(id: id.toString(), name: name.toString())),
+                          );
+                        },
+                        child: Text("See Department", style: TextStyle(color: Colors.red)),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            );
+          },
+        );
+      },
+    );
+  }
+
+
 
   @override
   Widget build(BuildContext context) {
-    welcomeText() {
-      var now = DateTime.now();
-
-      if (now.hour <= 11 && now.hour >= 5) {
-        return Text("Good Morning", style: GoogleFonts.playfairDisplaySc(fontSize: 18, color: Colors.white, fontWeight: FontWeight.bold));
-      }
-      else if (now.hour <= 17 && now.hour >= 12) {
-        return Text("Good Afternoon", style: GoogleFonts.playfairDisplaySc(fontSize: 18, color: Colors.white, fontWeight: FontWeight.bold),);
-      }
-      else if (now.hour <= 21 && now.hour >= 18 && now.hour >= 19 && now.hour >= 5 || now.hour == 0) {
-        return Text("Good Evening", style: GoogleFonts.playfairDisplaySc(fontSize: 18, color: Colors.white, fontWeight: FontWeight.bold),);
-      }
-      else {
-        return Text("Hello", style: GoogleFonts.playfairDisplaySc(fontSize: 18, color: Colors.white, fontWeight: FontWeight.bold),);
-      }
-    }
-
-    builder(String id) {
-      return FutureBuilder(
-        future: fetchData(id),
-        builder: (BuildContext context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return Padding(
-              padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
-              child: CircularProgressIndicator(),
-            );
-          }
-          var data = jsonDecode(snapshot.data.toString());
-
-          var leading;
-          var artist;
-
-          try {
-            if (data["primaryImageSmall"] == "") {
-              leading = Icon(Icons.dangerous, color: Colors.red);
-            }
-            else {
-              leading = Image.network(data["primaryImageSmall"]);
-            }
-
-            if (data["artistDisplayName"]== "") {
-              artist = "Unknown";
-            }
-            else {
-              artist = data["artistDisplayName"];
-            }
-          }
-          on TypeError {
-            return SizedBox.shrink();
-          }
-
-          return Card(
-            clipBehavior: Clip.antiAlias,
-            child: Column(
-              children: [
-                ListTile(
-                  leading: leading,
-                  title: Text(data["title"]),
-                  subtitle: Text(
-                    "by $artist",
-                    style: TextStyle(color: Colors.black.withOpacity(0.6)),
-                  ),
-                ),
-                ButtonBar(
-                  alignment: MainAxisAlignment.start,
-                  children: [
-                    TextButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => DetailsPage(id: data["objectID"].toString())),
-                        );
-                      },
-                      child: Text("Details", style: TextStyle(color: Colors.red)),
-                    ),
-                    TextButton(
-                      onPressed: () {
-                        _writeData(data["objectID"].toString());
-                      },
-                      child: Text("Add to Favorites", style: TextStyle(color: Colors.red)),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          );
-        },
-      );
-    }
-
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: Center(
@@ -247,24 +221,6 @@ class _HomePageState extends State<HomePage> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(builder: (context) => FavoritesPage()),
-                          );
-                        },
-                      ),
-                    )
-                ),
-                Padding(
-                    padding: EdgeInsets.fromLTRB(0, 50,80, 20),
-                    child: Align(
-                      alignment: Alignment.topRight,
-                      child: IconButton(
-                        iconSize: 30,
-                        color: Colors.white,
-                        icon: Icon(Icons.refresh_outlined),
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (BuildContext context) => this.widget)
                           );
                         },
                       ),
@@ -322,37 +278,20 @@ class _HomePageState extends State<HomePage> {
               ]
             ),
             Padding(
-              padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
+              padding: EdgeInsets.fromLTRB(0, 15, 0, 0),
               child: Column(
                 children: <Widget>[
-                  Text("Random Items You Could Like", style: GoogleFonts.merriweather(fontSize: 18, color: Colors.black)),
+                  Text("Departments", style: GoogleFonts.merriweather(fontSize: 18, color: Colors.black)),
                   SizedBox(
-                    height: MediaQuery.of(context).size.height - 443,
-                    child: Expanded(
-                      child: SingleChildScrollView(
-                        scrollDirection: Axis.vertical,
-                        child: Column(
-                          children: <Widget>[
-                            builder(randint1.toString()),
-                            builder(randint2.toString()),
-                            builder(randint3.toString()),
-                            builder(randint4.toString()),
-                            builder(randint5.toString()),
-                            builder(randint6.toString()),
-                            TextButton(
-                             onPressed: () {
-                               Navigator.push(
-                                   context,
-                                   MaterialPageRoute(
-                                       builder: (BuildContext context) => AllPage()
-                                   )
-                               );
-                             },
-                             child: Text("See more"),
-                            )
-                          ],
-                        )
-                      ),
+                    height: MediaQuery.of(context).size.height - 438,
+                    child: ListView(
+                      shrinkWrap: true,
+                      children: <Widget>[
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height - 443,
+                          child: builder()
+                        ),
+                      ],
                     ),
                   ),
                 ],
