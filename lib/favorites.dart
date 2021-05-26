@@ -222,19 +222,14 @@ class _FavoritesPageState extends State<FavoritesPage> {
       ),
       body: ListView(
         children: <Widget>[
-          Column(
-            children: <Widget>[
-              SizedBox(
-                height: MediaQuery.of(context).size.height - 100,
-                child: Expanded(
-                  child: builder()
-                ),
-              ),
-            ],
+          SizedBox(
+            height: MediaQuery.of(context).size.height - 100,
+            child: Expanded(
+                child: builder()
+            ),
           ),
         ],
       ),
     );
   }
-
 }

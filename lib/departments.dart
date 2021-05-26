@@ -220,19 +220,15 @@ class _DepartmentsPageState extends State<DepartmentsPage> {
         ),
       ),
       body: ListView(
-        children: <Widget>[
-          Column(
-            children: <Widget>[
-              Scrollbar(
-                child: SizedBox(
-                  height: 700,
-                  child: Expanded(
-                      child: builder()
-                  ),
-                ),
-              )
-            ],
-          ),
+        children:  <Widget>[
+          Scrollbar(
+            child: SizedBox(
+              height: MediaQuery.of(context).size.height,
+              child: Expanded(
+                  child: builder()
+              ),
+            ),
+          )
         ],
       ),
     );

@@ -206,21 +206,20 @@ class _AllPageState extends State<AllPage> {
       ),
       body: ListView(
         children: <Widget>[
-          Column(
-            children: <Widget>[
-              Text("All of the items in MET (475.000+)", style: TextStyle(fontSize: 18, color: Colors.black)),
-              Scrollbar(
-                child: SizedBox(
-                  height: 700,
-                  child: Expanded(
-                      child: builder()
-                  ),
-                ),
-              )
-            ],
+          Align(
+            alignment: Alignment.topCenter,
+            child: Text("All of the items in MET (475.000+)", style: TextStyle(fontSize: 18, color: Colors.black)),
           ),
+          Scrollbar(
+            child: SizedBox(
+              height: MediaQuery.of(context).size.height,
+              child: Expanded(
+                  child: builder()
+              ),
+            ),
+          )
         ],
-      ),
+      )
     );
   }
 }

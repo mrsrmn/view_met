@@ -229,23 +229,18 @@ class _SearchPageState extends State<SearchPage> {
       ),
       body: ListView(
         children: <Widget>[
-          Column(
-            children: <Widget>[
-              Text("Search results for $text", style: TextStyle(fontSize: 18, color: Colors.black)),
-              Visibility(
-                visible: visibility,
-                child: Text("$count results found", style: TextStyle(fontSize: 18, color: Colors.black)),
-              ),
-              Scrollbar(
-                child: SizedBox(
-                  height: 700,
-                  child: Expanded(
-                     child: builder(text)
-                 ),
-               ),
-              )
-            ],
+          Align(
+            alignment: Alignment.topCenter,
+            child: Text("Search results for $text", style: TextStyle(fontSize: 18, color: Colors.black)),
           ),
+          Scrollbar(
+            child: SizedBox(
+              height: MediaQuery.of(context).size.height,
+              child: Expanded(
+                  child: builder(text)
+              ),
+            ),
+          )
         ],
       ),
     );
