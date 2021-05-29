@@ -132,7 +132,7 @@ class _HomePageState extends State<HomePage> {
         var data = jsonDecode(snapshot.data.toString());
 
         return ListView.builder(
-          padding: EdgeInsets.zero,
+          padding: EdgeInsets.fromLTRB(0, 7, 0, 0),
           shrinkWrap: true,
           scrollDirection: Axis.vertical,
           itemCount: data["departments"].length,
