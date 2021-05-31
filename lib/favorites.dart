@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -43,31 +44,62 @@ class _FavoritesPageState extends State<FavoritesPage> {
       );
     }
     else {
-      showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            title: Text("Are you sure?"),
-            content: Text("This will delete everything forever in your favorites list!"),
-            actions: [
-              TextButton(
-                child: Text("OK"),
-                onPressed: () {
-                  prefs.setStringList("favorites", []);
+      if (Platform.isIOS) {
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return CupertinoAlertDialog(
+              title: Text("Are you sure?"),
+              content: Text("This will delete everything forever in your favorites list!"),
+              actions: [
+                TextButton(
+                  child: Text("OK"),
+                  onPressed: () {
+                    prefs.setStringList("favorites", []);
 
-                  Navigator.pop(context);
-                },
-              ),
-              TextButton(
-                child: Text("CANCEL"),
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-              )
-            ],
-          );
-        },
-      );
+                    Navigator.pop(context);
+                    setState(() {});
+                  },
+                ),
+                TextButton(
+                  child: Text("CANCEL"),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                )
+              ],
+            );
+          },
+        );
+      }
+      else {
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text("Are you sure?"),
+              content: Text("This will delete everything forever in your favorites list!"),
+              actions: [
+                TextButton(
+                  child: Text("OK"),
+                  onPressed: () {
+                    prefs.setStringList("favorites", []);
+
+                    Navigator.pop(context);
+                    setState(() {});
+                  },
+                ),
+                TextButton(
+                  child: Text("CANCEL"),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                )
+              ],
+            );
+          },
+        );
+      }
     }
   }
 
@@ -83,12 +115,7 @@ class _FavoritesPageState extends State<FavoritesPage> {
     list!.remove(id);
 
     prefs.setStringList("favorites", list);
-
-    Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-            builder: (BuildContext context) => this.widget)
-    );
+    setState(() {});
   }
 
   builder() {
