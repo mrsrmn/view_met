@@ -75,7 +75,7 @@ class _SplashPageState extends State<SplashPage> {
             Container(
               padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
               child: CircularProgressIndicator(
-                valueColor: AlwaysStoppedAnimation<Color>(Color(0xFFDCDCDC)),
+                valueColor: AlwaysStoppedAnimation<Color>(Colors.red),
               ),
             )
           ],
