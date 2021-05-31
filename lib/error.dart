@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:connectivity/connectivity.dart';
 import 'package:view_met/splash.dart';
 
-import 'home.dart';
-
-import 'dart:async';
 import 'dart:ui';
 
 
@@ -35,7 +31,7 @@ class _ErrorPageState extends State<ErrorPage> {
           children: <Widget>[
             Icon(Icons.dangerous, size: 50, color: Colors.red),
             Text("No Internet Connection!", style: GoogleFonts.merriweather(fontSize: 23, color: Colors.black)),
-            Text("To use View MET, you need an internet connection.", style: GoogleFonts.merriweather(fontSize: 18, color: Colors.black)),
+            Text("To use View MET, you need an internet connection.", style: GoogleFonts.merriweather(fontSize: 15, color: Colors.black), textAlign: TextAlign.center),
             TextButton(
               style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(Colors.red)
