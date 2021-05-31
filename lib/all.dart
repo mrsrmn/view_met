@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -158,10 +159,10 @@ class _AllPageState extends State<AllPage> {
                     children: [
                       ListTile(
                         leading: leading,
-                        title: Text(data["title"]),
+                        title: Text(data["title"], style: GoogleFonts.merriweatherSans()),
                         subtitle: Text(
                           "by $artist",
-                          style: TextStyle(color: Colors.black.withOpacity(0.6)),
+                          style: GoogleFonts.merriweatherSans(color: Colors.black.withOpacity(0.6)),
                         ),
                       ),
                       ButtonBar(
@@ -174,13 +175,13 @@ class _AllPageState extends State<AllPage> {
                                 MaterialPageRoute(builder: (context) => DetailsPage(id: data["objectID"].toString())),
                               );
                             },
-                            child: Text("Details", style: TextStyle(color: Colors.red)),
+                            child: Text("Details", style: GoogleFonts.merriweatherSans(color: Colors.red)),
                           ),
                           TextButton(
                             onPressed: () {
                               _writeData(data["objectID"].toString());
                             },
-                            child: Text("Add to Favorites", style: TextStyle(color: Colors.red)),
+                            child: Text("Add to Favorites", style: GoogleFonts.merriweatherSans(color: Colors.red)),
                           ),
                         ],
                       ),
@@ -208,7 +209,7 @@ class _AllPageState extends State<AllPage> {
         children: <Widget>[
           Align(
             alignment: Alignment.topCenter,
-            child: Text("All of the items in MET (475.000+)", style: TextStyle(fontSize: 18, color: Colors.black)),
+            child: Text("All of the items in MET (475.000+)", style: GoogleFonts.merriweatherSans(fontSize: 18, color: Colors.black)),
           ),
           Scrollbar(
             child: SizedBox(

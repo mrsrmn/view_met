@@ -71,7 +71,7 @@ class _SplashPageState extends State<SplashPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text("Loading View MET", style: GoogleFonts.merriweather(fontSize: 18, color: Colors.black)),
+            Text("Loading View MET", style: GoogleFonts.merriweatherSans(fontSize: 18, color: Colors.black)),
             Container(
               padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
               child: CircularProgressIndicator(

@@ -134,7 +134,7 @@ class _HomePageState extends State<HomePage> {
               child: Column(
                 children: [
                   ListTile(
-                    title: Text(data["departments"][index]["displayName"]),
+                    title: Text(data["departments"][index]["displayName"], style: GoogleFonts.merriweatherSans(),),
                   ),
                   ButtonBar(
                     alignment: MainAxisAlignment.start,
@@ -146,7 +146,7 @@ class _HomePageState extends State<HomePage> {
                             MaterialPageRoute(builder: (context) => DepartmentsPage(id: id.toString(), name: name.toString())),
                           );
                         },
-                        child: Text("See Department", style: TextStyle(color: Colors.red)),
+                        child: Text("See Department", style: GoogleFonts.merriweatherSans(color: Colors.red)),
                       ),
                     ],
                   ),
@@ -265,7 +265,7 @@ class _HomePageState extends State<HomePage> {
                               ),
                             ),
                             filled: true,
-                            hintStyle: TextStyle(color: Colors.black),
+                            hintStyle: GoogleFonts.merriweatherSans(color: Colors.black),
                             hintText: "Search View MET",
                             fillColor: Colors.white
                         ),
@@ -279,7 +279,7 @@ class _HomePageState extends State<HomePage> {
               padding: EdgeInsets.fromLTRB(0, 15, 0, 0),
               child: Column(
                 children: <Widget>[
-                  Text("Departments", style: GoogleFonts.merriweather(fontSize: 18, color: Colors.black)),
+                  Text("Departments", style: GoogleFonts.merriweatherSans(fontSize: 18, color: Colors.black)),
                   Scrollbar(
                     child: SizedBox(
                       height: MediaQuery.of(context).size.height - 438,

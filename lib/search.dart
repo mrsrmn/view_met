@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -115,7 +116,7 @@ class _SearchPageState extends State<SearchPage> {
         if (dataSearch["total"] == 0) {
           return Align(
             alignment: Alignment.center,
-            child: Text("No results found!", style: TextStyle(fontSize: 15, color: Colors.black)),
+            child: Text("No results found!", style: GoogleFonts.merriweatherSans(fontSize: 15, color: Colors.black)),
           );
         }
 
@@ -178,10 +179,10 @@ class _SearchPageState extends State<SearchPage> {
                     children: [
                       ListTile(
                         leading: leading,
-                        title: Text(data["title"]),
+                        title: Text(data["title"], style: GoogleFonts.merriweatherSans()),
                         subtitle: Text(
                           "by $artist",
-                          style: TextStyle(color: Colors.black.withOpacity(0.6)),
+                          style: GoogleFonts.merriweatherSans(color: Colors.black.withOpacity(0.6)),
                         ),
                       ),
                       ButtonBar(
@@ -194,13 +195,13 @@ class _SearchPageState extends State<SearchPage> {
                                 MaterialPageRoute(builder: (context) => DetailsPage(id: data["objectID"].toString())),
                               );
                             },
-                            child: Text("Details", style: TextStyle(color: Colors.red)),
+                            child: Text("Details", style: GoogleFonts.merriweatherSans(color: Colors.red)),
                           ),
                           TextButton(
                             onPressed: () {
                               _writeData(data["objectID"].toString());
                             },
-                            child: Text("Add to Favorites", style: TextStyle(color: Colors.red)),
+                            child: Text("Add to Favorites", style: GoogleFonts.merriweatherSans(color: Colors.red)),
                           ),
                         ],
                       ),
@@ -231,7 +232,7 @@ class _SearchPageState extends State<SearchPage> {
         children: <Widget>[
           Align(
             alignment: Alignment.topCenter,
-            child: Text("Search results for $text", style: TextStyle(fontSize: 18, color: Colors.black)),
+            child: Text("Search results for $text", style: GoogleFonts.merriweatherSans(fontSize: 18, color: Colors.black)),
           ),
           Scrollbar(
             child: SizedBox(

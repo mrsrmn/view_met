@@ -29,8 +29,8 @@ class _ErrorPageState extends State<ErrorPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Icon(Icons.dangerous, size: 50, color: Colors.red),
-            Text("No Internet Connection!", style: GoogleFonts.merriweather(fontSize: 23, color: Colors.black)),
-            Text("To use View MET, you need an internet connection.", style: GoogleFonts.merriweather(fontSize: 15, color: Colors.black), textAlign: TextAlign.center),
+            Text("No Internet Connection!", style: GoogleFonts.merriweatherSans(fontSize: 23, color: Colors.black)),
+            Text("To use View MET, you need an internet connection.", style: GoogleFonts.merriweatherSans(fontSize: 15, color: Colors.black), textAlign: TextAlign.center),
             TextButton(
               style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(Colors.red)
@@ -40,7 +40,7 @@ class _ErrorPageState extends State<ErrorPage> {
                     .pushReplacement(MaterialPageRoute(builder: (context) => SplashPage())
                 );
               },
-              child: Text("RETRY", style: TextStyle(color: Colors.white)),
+              child: Text("RETRY", style: GoogleFonts.merriweatherSans(color: Colors.white)),
             ),
           ],
         ),

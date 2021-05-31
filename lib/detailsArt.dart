@@ -368,7 +368,7 @@ class _DetailsPageState extends State<DetailsPage> {
                 onPressed: () {
                   _writeData(data["objectID"].toString());
                 },
-                child: Text("Add to Favorites", style: TextStyle(color: Colors.white)),
+                child: Text("Add to Favorites", style: GoogleFonts.merriweatherSans(color: Colors.white)),
               ),
             ),
           ],
@@ -386,7 +386,7 @@ class _DetailsPageState extends State<DetailsPage> {
         ),
         foregroundColor: Colors.white,
         elevation: 0,
-        title: Text("Details", style: TextStyle(color: Colors.white)),
+        title: Text("Details", style: GoogleFonts.merriweatherSans(color: Colors.white)),
       ),
       body: ListView(
         children: <Widget>[

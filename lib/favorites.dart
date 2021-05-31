@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -102,7 +103,7 @@ class _FavoritesPageState extends State<FavoritesPage> {
         if (list.isEmpty) {
           return Align(
             alignment: Alignment.center,
-            child: Text("You don't have any favorites saved!", style: TextStyle(fontSize: 15, color: Colors.black)),
+            child: Text("You don't have any favorites saved!", style: GoogleFonts.merriweatherSans(fontSize: 15, color: Colors.black)),
           );
         }
 
@@ -162,10 +163,10 @@ class _FavoritesPageState extends State<FavoritesPage> {
                     children: [
                       ListTile(
                         leading: leading,
-                        title: Text(data["title"]),
+                        title: Text(data["title"], style: GoogleFonts.merriweatherSans()),
                         subtitle: Text(
                           "by $artist",
-                          style: TextStyle(color: Colors.black.withOpacity(0.6)),
+                          style: GoogleFonts.merriweatherSans(color: Colors.black.withOpacity(0.6)),
                         ),
                       ),
                       ButtonBar(
@@ -178,13 +179,13 @@ class _FavoritesPageState extends State<FavoritesPage> {
                                 MaterialPageRoute(builder: (context) => DetailsPage(id: data["objectID"].toString())),
                               );
                             },
-                            child: Text("Details", style: TextStyle(color: Colors.red)),
+                            child: Text("Details", style: GoogleFonts.merriweatherSans(color: Colors.red)),
                           ),
                           TextButton(
                             onPressed: () {
                               _deleteData(id);
                             },
-                            child: Text("Remove from Favorites", style: TextStyle(color: Colors.red)),
+                            child: Text("Remove from Favorites", style: GoogleFonts.merriweatherSans(color: Colors.red)),
                           ),
                         ],
                       ),

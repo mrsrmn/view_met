@@ -39,7 +39,7 @@ class _AboutPageState extends State<AboutPage> {
                   ),
                 )
             ),
-            Text("Made with Flutter by MakufonSkifto", style: GoogleFonts.merriweather(fontSize: 18, color: Colors.black)),
+            Text("Made with Flutter by MakufonSkifto", style: GoogleFonts.merriweatherSans(fontSize: 18, color: Colors.black)),
             Padding(
                 padding: EdgeInsets.fromLTRB(0, 10, 0, 20),
                 child: Align(
@@ -54,7 +54,7 @@ class _AboutPageState extends State<AboutPage> {
                   child: RichText(
                     textAlign: TextAlign.center,
                     text: TextSpan(
-                      style: GoogleFonts.merriweather(fontSize: 15, color: Colors.black),
+                      style: GoogleFonts.merriweatherSans(fontSize: 15, color: Colors.black),
                       children: [
                         TextSpan(
                           text: "Special thanks to ",
@@ -65,8 +65,8 @@ class _AboutPageState extends State<AboutPage> {
                             ..onTap = () async {
                               await launch("https://metmuseum.github.io/", forceSafariVC: false);
                             },
-                          style: TextStyle(
-                              fontSize: 17, fontFamily: "Ubuntu", color: Colors.blue
+                          style: GoogleFonts.merriweatherSans(
+                              fontSize: 17, color: Colors.blue
                           ),
                         ),
                         TextSpan(
@@ -81,7 +81,7 @@ class _AboutPageState extends State<AboutPage> {
                 padding: EdgeInsets.fromLTRB(0, 70, 0, 20),
                 child: Align(
                   alignment: Alignment.bottomCenter,
-                  child: Text("Version 1.0.0", textAlign: TextAlign.center,style: GoogleFonts.merriweather(fontSize: 15, color: Colors.black)),
+                  child: Text("Version 1.0.0", textAlign: TextAlign.center,style: GoogleFonts.merriweatherSans(fontSize: 15, color: Colors.black)),
                 )
             ),
           ],
