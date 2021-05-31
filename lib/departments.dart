@@ -224,9 +224,7 @@ class _DepartmentsPageState extends State<DepartmentsPage> {
           Scrollbar(
             child: SizedBox(
               height: MediaQuery.of(context).size.height,
-              child: Expanded(
-                  child: builder()
-              ),
+              child: builder()
             ),
           )
         ],

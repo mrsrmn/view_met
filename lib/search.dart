@@ -236,9 +236,7 @@ class _SearchPageState extends State<SearchPage> {
           Scrollbar(
             child: SizedBox(
               height: MediaQuery.of(context).size.height,
-              child: Expanded(
-                  child: builder(text)
-              ),
+              child: builder(text)
             ),
           )
         ],

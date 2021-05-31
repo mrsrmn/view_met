@@ -194,13 +194,11 @@ class _HomePageState extends State<HomePage> {
                 Container(
                   width: MediaQuery.of(context).size.width,
                   height: 400,
-                  child: Positioned.fill(
-                    child: Image.asset(
-                        "assets/MET.jpg",
-                        fit: BoxFit.fill,
-                        color: Color.fromRGBO(117, 117, 117, 0.5),
-                        colorBlendMode: BlendMode.modulate
-                    ),
+                  child: Image.asset(
+                      "assets/MET.jpg",
+                      fit: BoxFit.fill,
+                      color: Color.fromRGBO(117, 117, 117, 0.5),
+                      colorBlendMode: BlendMode.modulate
                   ),
                 ),
                 Padding(
@@ -296,9 +294,7 @@ class _HomePageState extends State<HomePage> {
                   Scrollbar(
                     child: SizedBox(
                       height: MediaQuery.of(context).size.height - 438,
-                      child: Expanded(
-                          child: builder()
-                      ),
+                      child: builder()
                     ),
                   ),
                 ],

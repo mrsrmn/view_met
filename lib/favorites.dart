@@ -99,7 +99,7 @@ class _FavoritesPageState extends State<FavoritesPage> {
       future: favoritesList(),
       builder: (BuildContext context, snapshot) {
 
-        List list = snapshot.data as List;
+        List list = (snapshot.data as List).map((e) => e as String).toList();
 
         int count = list.length;
 
@@ -224,9 +224,7 @@ class _FavoritesPageState extends State<FavoritesPage> {
         children: <Widget>[
           SizedBox(
             height: MediaQuery.of(context).size.height - 100,
-            child: Expanded(
-                child: builder()
-            ),
+            child: builder()
           ),
         ],
       ),
