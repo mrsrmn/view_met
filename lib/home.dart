@@ -27,18 +27,7 @@ class _HomePageState extends State<HomePage> {
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,
     ]);
-    checkEmpty();
   }
-
-  checkEmpty() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    var list = prefs.getStringList("favorites");
-
-    if (list == null) {
-      prefs.setStringList("favorites", []);
-    }
-  }
-
 
   fetchData() async {
     var request = await http.get(Uri.parse("https://collectionapi.metmuseum.org/public/collection/v1/departments"));
