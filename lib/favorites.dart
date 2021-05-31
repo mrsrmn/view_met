@@ -54,11 +54,8 @@ class _FavoritesPageState extends State<FavoritesPage> {
                 onPressed: () {
                   prefs.setStringList("favorites", []);
 
-                  Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                          builder: (BuildContext context) => this.widget)
-                  );
+                  Navigator.pop(context);
+                  setState(() {});
                 },
               ),
               TextButton(
@@ -87,11 +84,7 @@ class _FavoritesPageState extends State<FavoritesPage> {
 
     prefs.setStringList("favorites", list);
 
-    Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-            builder: (BuildContext context) => this.widget)
-    );
+    setState(() {});
   }
 
   builder() {
