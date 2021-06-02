@@ -4,7 +4,8 @@ See your favorite Metropolitan Museum of Art pieces with 1 click.
 
 ## Download
 
-Here is the download link for the APK file: https://drive.google.com/file/d/1i6zusCcaX_0a-r4Z5MbK6bVQm2Jvo4Rv/view
+Google Play: https://play.google.com/store/apps/details?id=com.emirs.view_met
+iOS: Not coming anytime soon :(
 
 ## How to Run the app
 
