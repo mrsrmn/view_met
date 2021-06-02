@@ -140,12 +140,12 @@ class _DetailsPageState extends State<DetailsPage> {
                 children: [
                   Text(
                     "Title: ",
-                    style: GoogleFonts.workSans(fontSize: 20, color: Colors.red),
+                    style: GoogleFonts.merriweatherSans(fontSize: 20, color: Colors.red),
                   ),
                   Expanded(
                     child: Text(
                       data["title"].toString(),
-                      style: GoogleFonts.workSans(fontSize: 20),
+                      style: GoogleFonts.merriweatherSans(fontSize: 20),
                     ),
                   )
                 ],
@@ -157,12 +157,12 @@ class _DetailsPageState extends State<DetailsPage> {
                 children: [
                   Text(
                     "Object Name: ",
-                    style: GoogleFonts.workSans(fontSize: 20, color: Colors.red),
+                    style: GoogleFonts.merriweatherSans(fontSize: 20, color: Colors.red),
                   ),
                   Expanded(
                     child: Text(
                       data["objectName"].toString(),
-                      style: GoogleFonts.workSans(fontSize: 20),
+                      style: GoogleFonts.merriweatherSans(fontSize: 20),
                     ),
                   )
                 ],
@@ -174,12 +174,12 @@ class _DetailsPageState extends State<DetailsPage> {
                 children: [
                   Text(
                     "Artist: ",
-                    style: GoogleFonts.workSans(fontSize: 20, color: Colors.red),
+                    style: GoogleFonts.merriweatherSans(fontSize: 20, color: Colors.red),
                   ),
                   Expanded(
                     child: Text(
                       artist.toString(),
-                      style: GoogleFonts.workSans(fontSize: 20),
+                      style: GoogleFonts.merriweatherSans(fontSize: 20),
                     ),
                   )
                 ],
@@ -191,12 +191,12 @@ class _DetailsPageState extends State<DetailsPage> {
                 children: [
                   Text(
                     "Object ID: ",
-                    style: GoogleFonts.workSans(fontSize: 20, color: Colors.red),
+                    style: GoogleFonts.merriweatherSans(fontSize: 20, color: Colors.red),
                   ),
                   Expanded(
                     child: Text(
                       data["objectID"].toString(),
-                      style: GoogleFonts.workSans(fontSize: 20),
+                      style: GoogleFonts.merriweatherSans(fontSize: 20),
                     ),
                   )
                 ],
@@ -208,12 +208,12 @@ class _DetailsPageState extends State<DetailsPage> {
                 children: [
                   Text(
                     "Is Highlighted: ",
-                    style: GoogleFonts.workSans(fontSize: 20, color: Colors.red),
+                    style: GoogleFonts.merriweatherSans(fontSize: 20, color: Colors.red),
                   ),
                   Expanded(
                     child: Text(
                       data["isHighlight"].toString(),
-                      style: GoogleFonts.workSans(fontSize: 20),
+                      style: GoogleFonts.merriweatherSans(fontSize: 20),
                     ),
                   )
                 ],
@@ -225,12 +225,12 @@ class _DetailsPageState extends State<DetailsPage> {
                 children: [
                   Text(
                     "Date: ",
-                    style: GoogleFonts.workSans(fontSize: 20, color: Colors.red),
+                    style: GoogleFonts.merriweatherSans(fontSize: 20, color: Colors.red),
                   ),
                   Expanded(
                     child: Text(
                       data["objectDate"].toString(),
-                      style: GoogleFonts.workSans(fontSize: 20),
+                      style: GoogleFonts.merriweatherSans(fontSize: 20),
                     ),
                   )
                 ],
@@ -242,12 +242,12 @@ class _DetailsPageState extends State<DetailsPage> {
                 children: [
                   Text(
                     "Accession Year: ",
-                    style: GoogleFonts.workSans(fontSize: 20, color: Colors.red),
+                    style: GoogleFonts.merriweatherSans(fontSize: 20, color: Colors.red),
                   ),
                   Expanded(
                     child: Text(
                       data["accessionYear"].toString(),
-                      style: GoogleFonts.workSans(fontSize: 20),
+                      style: GoogleFonts.merriweatherSans(fontSize: 20),
                     ),
                   )
                 ],
@@ -259,12 +259,12 @@ class _DetailsPageState extends State<DetailsPage> {
                 children: [
                   Text(
                     "Accession Number: ",
-                    style: GoogleFonts.workSans(fontSize: 20, color: Colors.red),
+                    style: GoogleFonts.merriweatherSans(fontSize: 20, color: Colors.red),
                   ),
                   Expanded(
                     child: Text(
                       data["accessionNumber"].toString(),
-                      style: GoogleFonts.workSans(fontSize: 20),
+                      style: GoogleFonts.merriweatherSans(fontSize: 20),
                     ),
                   )
                 ],
@@ -276,12 +276,12 @@ class _DetailsPageState extends State<DetailsPage> {
                 children: [
                   Text(
                     "Department: ",
-                    style: GoogleFonts.workSans(fontSize: 20, color: Colors.red),
+                    style: GoogleFonts.merriweatherSans(fontSize: 20, color: Colors.red),
                   ),
                   Expanded(
                     child: Text(
                       data["department"].toString(),
-                      style: GoogleFonts.workSans(fontSize: 20),
+                      style: GoogleFonts.merriweatherSans(fontSize: 20),
                     ),
                   )
                 ],
@@ -293,12 +293,12 @@ class _DetailsPageState extends State<DetailsPage> {
                 children: [
                   Text(
                     "Culture: ",
-                    style: GoogleFonts.workSans(fontSize: 20, color: Colors.red),
+                    style: GoogleFonts.merriweatherSans(fontSize: 20, color: Colors.red),
                   ),
                   Expanded(
                     child: Text(
                       culture.toString(),
-                      style: GoogleFonts.workSans(fontSize: 20),
+                      style: GoogleFonts.merriweatherSans(fontSize: 20),
                     ),
                   )
                 ],
@@ -310,12 +310,12 @@ class _DetailsPageState extends State<DetailsPage> {
                 children: [
                   Text(
                     "Dimensions: ",
-                    style: GoogleFonts.workSans(fontSize: 20, color: Colors.red),
+                    style: GoogleFonts.merriweatherSans(fontSize: 20, color: Colors.red),
                   ),
                   Expanded(
                     child: Text(
                       data["dimensions"].toString(),
-                      style: GoogleFonts.workSans(fontSize: 20),
+                      style: GoogleFonts.merriweatherSans(fontSize: 20),
                     ),
                   )
                 ],
@@ -327,12 +327,12 @@ class _DetailsPageState extends State<DetailsPage> {
                 children: [
                   Text(
                     "Credit Line: ",
-                    style: GoogleFonts.workSans(fontSize: 20, color: Colors.red),
+                    style: GoogleFonts.merriweatherSans(fontSize: 20, color: Colors.red),
                   ),
                   Expanded(
                     child: Text(
                       data["creditLine"].toString(),
-                      style: GoogleFonts.workSans(fontSize: 20),
+                      style: GoogleFonts.merriweatherSans(fontSize: 20),
                     ),
                   )
                 ],
@@ -344,7 +344,7 @@ class _DetailsPageState extends State<DetailsPage> {
                 children: [
                   Text(
                     "Object URL: ",
-                    style: GoogleFonts.workSans(fontSize: 20, color: Colors.red),
+                    style: GoogleFonts.merriweatherSans(fontSize: 20, color: Colors.red),
                   ),
                   RichText(
                     text: TextSpan(
@@ -353,7 +353,7 @@ class _DetailsPageState extends State<DetailsPage> {
                         ..onTap = () async {
                           await launch(data["objectURL"], forceSafariVC: false);
                         },
-                      style: GoogleFonts.workSans(fontSize: 20, color: Colors.blue),
+                      style: GoogleFonts.merriweatherSans(fontSize: 20, color: Colors.blue),
                     ),
                   ),
                 ],
